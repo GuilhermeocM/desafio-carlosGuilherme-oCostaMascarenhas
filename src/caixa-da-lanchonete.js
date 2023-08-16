@@ -43,7 +43,18 @@ class CaixaDaLanchonete {
     return false
   }
 
+  verificarFormaDePagamento(metodoDePagamento){
+    let formasDePagamento = ['debito', 'credito', 'dinheiro']
+    if(!formasDePagamento.includes(metodoDePagamento)){
+      return true
+    }
+  return false
+}
+
   calcularValorDaCompra(metodoDePagamento, itens) {
+      if(this.verificarFormaDePagamento(metodoDePagamento)){
+        return "Forma de pagamento inválida!"
+      }
       
       if(this.verificarListaVazia(itens)){
           return "Não há itens no carrinho de compra!"
