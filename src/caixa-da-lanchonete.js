@@ -47,8 +47,8 @@ class CaixaDaLanchonete {
 
   verificarItemZero(itens){
     for(let n of itens){
-      let teste = n[n.length - 1]
-      if(teste == 0){
+      let quantidadeDeItens = n[n.length - 1]
+      if(quantidadeDeItens == 0){
         return true
       }
     }
