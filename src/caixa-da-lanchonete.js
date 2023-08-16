@@ -1,5 +1,62 @@
 class CaixaDaLanchonete {
 
+  calcular(itens){
+    let total = []
+    for(let n of itens){
+      if(n.match('cafe')){
+        let precoCafe = n.replace('cafe', 3)
+        let quantidadeCafe = n.split(',')
+        let precoFinalCafe = precoCafe[0] * quantidadeCafe[1]
+        total.push(precoFinalCafe)
+      }
+      if(n.match('chantily')){
+        let precoChantily = n.replace('chantily', 1.5).split(',')
+        let quantidadeChantily = n.split(',')
+        let precoFinalChantily = precoChantily[0] * quantidadeChantily[1]
+        total.push(precoFinalChantily)
+      }
+      if(n.match('suco')){
+        let precoSuco = n.replace('suco', 6.2).split(',')
+        let quantidadeSuco = n.split(',')
+        let precoFinalSuco = precoSuco[0] * quantidadeSuco[1]
+        total.push(precoFinalSuco)
+      }
+      if(n.match('sanduiche')){
+        let precoSanduiche = n.replace('sanduiche', 6.5).split(',')
+        let quantidadeSanduiche = n.split(',')
+        let precoFinalSanduiche = precoSanduiche[0] * quantidadeSanduiche[1]
+        total.push(precoFinalSanduiche)
+      }
+      if(n.match('queijo')){
+        let precoQueijo = n.replace('queijo', 2)
+        let quantidadeQueijo = n.split(',')
+        let precoFinalQueijo = precoQueijo[0] * quantidadeQueijo[1]
+        total.push(precoFinalQueijo)
+      }
+      if(n.match('salgado')){
+        let precoSalgado = n.replace('salgado', 7.25).split(',')
+        let quantidadeSalgado = n.split(',')
+        let precoFinalSalgado = precoSalgado[0] * quantidadeSalgado[1]
+        total.push(precoFinalSalgado)
+      }
+      if(n.match('combo1')){
+        let precoCombo1 = n.replace('combo1', 9.5).split(',')
+        let quantidadeCombo1 = n.split(',')
+        let precoFinalCombo1 = precoCombo1[0] * quantidadeCombo1[1]
+        total.push(precoFinalCombo1)
+      }
+      if(n.match('combo2')){
+        let precoCombo2 = n.replace('combo2', 7.5).split(',')
+        let quantidadeCombo2 = n.split(',')
+        let precoFinalCombo2 = precoCombo2[0] * quantidadeCombo2[1]
+        total.push(precoFinalCombo2)
+      }
+
+    }
+    let somatotal = total.reduce((accumulator, value) => accumulator + value, 0)
+    return somatotal
+  }
+
   verificarAdicional(itens){
       let itensSeparadosDeQuantidade = itens.join(',').split(',')
 
@@ -69,8 +126,8 @@ class CaixaDaLanchonete {
       if(this.verificarAdicional(itens)){
         return "Item extra não pode ser pedido sem o principal"
     }
-      
-      return 'passou'
+   
+      return this.calcular(itens)
     }
 
 }
