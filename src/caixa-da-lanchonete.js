@@ -1,6 +1,6 @@
 class CaixaDaLanchonete {
 
-  calcular(itens){
+  calcular(metodoDePagamento, itens){
     let total = []
     for(let n of itens){
       if(n.match('cafe')){
@@ -53,8 +53,16 @@ class CaixaDaLanchonete {
       }
 
     }
+
     let somatotal = total.reduce((accumulator, value) => accumulator + value, 0)
-    return somatotal
+
+     if(metodoDePagamento == 'dinheiro'){
+       somatotal = somatotal - (somatotal * 0.05)
+     }
+     if(metodoDePagamento == 'credito'){
+       somatotal = somatotal + (somatotal * 0.03)
+     }
+    return 'R$ ' + somatotal.toFixed(2).replace(".", ",")
   }
 
   verificarAdicional(itens){
@@ -127,7 +135,7 @@ class CaixaDaLanchonete {
         return "Item extra não pode ser pedido sem o principal"
     }
    
-      return this.calcular(itens)
+      return this.calcular(metodoDePagamento, itens)
     }
 
 }
